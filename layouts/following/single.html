@@ -40,33 +40,22 @@ p {
 <h1>Feed details</h1>
 <h2>{{ .Title }}</h2>
 
-{{ if .Params.Feed.Link }}
-  <a href="{{ .Params.Feed.Link }}">{{ .Params.Feed.Link }}</a>
+{{ if .Params.Link }}
+  <a href="{{ .Params.Link }}">{{ .Params.Link }}</a>
+    &mdash;
 {{ end }}
 
-{{ if .Params.Feed.FeedLink }}
-    &mdash;
-  <a href="{{ .Params.Feed.FeedLink }}">Subscribe</a>
-{{ end }}
+<a href="{{ .Params.FeedLink }}">Subscribe</a>
 
 {{ if .Description }}
   <p class="description">
   {{ .Description | truncate 1000 }}
   </p>
 {{ end }}
-
-{{ if .Params.Feed.Authors }}
-  Written by:
-  {{ $authors := slice }}
-  {{ range .Params.Feed.Authors }}
-    {{ $authors = $authors | append .name }}
-  {{ end }}
-  {{ delimit $authors ", " ", and " }}
-{{ end }}
 </div>
 
 {{ $posts := where
-      (where .Site.RegularPages "Section" "post")
+      (where .Site.RegularPages "Section" "reading")
     "Params.feed_id" .Params.id }}
 
 {{ if $posts }}

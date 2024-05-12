@@ -1,23 +1,21 @@
 <div class="post">
-  <a href="{{ .Params.post.link }}">
+  <a href="{{ .Params.link }}">
     <h2>
-      {{ .Params.post.Title | truncate 120 }}
+      {{ .Title | truncate 120 }}
     </h2>
   </a>
 
 
-  <span title="{{ .Date }}" >{{ .Params.pretty_age }}</span>
+  <span title="{{ .Date }}" >{{ .Date | time.Format "Monday, Jan 2 2006"}}</span>
     &mdash;
-  <a title="{{ .Params.feed.description }}" href="following/feed-{{ .Params.feed_id}}">
-      {{ if .Params.feed.title }}
-      {{ .Params.feed.title | truncate 30 }}
+
+  {{- range (where (where .Site.RegularPages "Section" "following") "Params.id" .Params.feed_id) }}
+  <a title="{{ .Title }}" href="following/feed-{{ .Params.id }}">
+      {{ if .Title }}
+      {{ .Title | truncate 30 }}
       {{ else }}
-      {{ (urls.Parse .Params.feed.link).Host }}
+      {{ (urls.Parse .Params.link).Host }}
       {{ end }}
     </a>
-    {{ if .Params.comments_link }}
-    &mdash;
-    <a title="Comments" href="{{ .Params.comments_link }}">Comments</a>
-    {{ end }}
-
+  {{ end }}
 </div>

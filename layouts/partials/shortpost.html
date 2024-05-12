@@ -1,8 +1,8 @@
 <div class="post">
-  <a href="{{ .Params.post.link }}">
+  <a href="{{ .Params.link }}">
     <h2>
-      {{ .Params.post.Title | truncate 120 }}
+      {{ .Params.Title | truncate 120 }}
     </h2>
   </a>
-  <span title="{{ .Date }}" >{{ .Params.pretty_age }}</span>
+  <span title="{{ .Date }}" >{{ .Date | time.Format "Monday, January 2 2006"}}</span>
 </div>

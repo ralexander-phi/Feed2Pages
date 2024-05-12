@@ -14,5 +14,6 @@
     <outline text="daniel.haxx.se" type="rss" xmlUrl="https://daniel.haxx.se/blog/feed/" />
     <outline text="tomhazledine" type="rss" xmlUrl="https://tomhazledine.com/feed.xml" />
     <outline text="words.filippo.io" type="rss" xmlUrl="https://words.filippo.io/rss/" />
+    <outline text="colinwalker" type="rss" xmlUrl="https://colinwalker.blog/dailyfeed.xml" />
   </body>
 </opml>
